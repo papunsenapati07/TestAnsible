@@ -1,0 +1,10 @@
+---
+- name: Converge
+  hosts: localhost
+  tasks:
+    - name: "Include Code"
+      include_role:
+        name: "Code"
+
+- import_playbook: ../../playbook.yml
+

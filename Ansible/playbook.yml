@@ -1,0 +1,8 @@
+-
+ name: exampleplaybook1
+ hosts: localhost
+ tasks:
+     - name: Execute data command
+       command: date
+     - name: Execute hellow world
+       script: script.sh
