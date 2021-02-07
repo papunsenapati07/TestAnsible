@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('checkout source code') {
+            steps {
+                // Get some code from a GitHub repository
+                git 'https://github.com/papunsenapati07/TestAnsible.git'
+                echo 'Hello World'
+
+            }
+        }
+        stage('Ansible Playbook Syntax check') {
+            steps {
+                // Get some code from a GitHub repository
+              ansiblePlaybook colorized: true, extras: '--syntax-check', installation: 'ansible', inventory: 'Ansible/playbook.yml', playbook: 'Ansible/playbook.yml'
+            }
+
+        }
+        stage('check ansible lint') {
+            steps {
+                // Get some code from a GitHub repository
+               sh '/Library/Frameworks/Python.framework/Versions/3.8/bin/ansible-lint Ansible/playbook.yml --force-color'
+
+            }
+        }
+    }
+}
